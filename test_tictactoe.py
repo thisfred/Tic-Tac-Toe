@@ -12,3 +12,11 @@ class BoardTests(TestCase):
         for x in range(3):
             for y in range(3):
                 self.assertEqual(None, board.get_piece(x, y))
+
+    def test_play(self):
+        board = Board()
+        player = 1
+        x = 1
+        y = 2
+        board.play(x, y, player)
+        self.assertEqual(player, board.get_piece(x, y))
