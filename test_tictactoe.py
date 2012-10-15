@@ -27,7 +27,7 @@ class BoardTests(TestCase):
     def test_out_of_bounds(self):
         """Playing out of bounds raises an exception."""
         player = 1
-        self.assertRaises(InvalidPosition, self.board.play, player, 3, 1)
-        self.assertRaises(InvalidPosition, self.board.play, player, 1, 3)
-        self.assertRaises(InvalidPosition, self.board.play, player, -1, 1)
-        self.assertRaises(InvalidPosition, self.board.play, player, 1, -1)
+        self.assertRaises(InvalidPosition, self.board.play, 3, 1, player)
+        self.assertRaises(InvalidPosition, self.board.play, 1, 3, player)
+        self.assertRaises(InvalidPosition, self.board.play, -1, 1, player)
+        self.assertRaises(InvalidPosition, self.board.play, 1, -1, player)
