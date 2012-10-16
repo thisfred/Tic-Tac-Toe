@@ -59,6 +59,7 @@ class BoardTests(TestCase):
         self.assertEqual(False, self.board.game_over)
 
     def test_game_over_board_full(self):
+        """Game over returns True when board is full."""
         self.board.positions = [
             [1, 2, 1],
             [2, 2, 1],

@@ -51,3 +51,11 @@ class Board(object):
                 len(set(self.get_pieces(self.other_player(player))))):
             raise OutOfTurn("It's not player %s's turn." % (player,))
         self.positions[y][x] = player
+
+    @property
+    def game_over(self):
+        if self.winner:
+            return True
+        if self.board_full:
+            return True
+        return False
