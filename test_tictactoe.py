@@ -49,4 +49,4 @@ class BoardTests(TestCase):
         """Playing out of turn raises an exception."""
         player = 1
         self.board.play(2, 2, player)
-        self.assertRaises(OutOfTurn, self.board.play, 2, 3, player)
+        self.assertRaises(OutOfTurn, self.board.play, 1, 2, player)
