@@ -2,7 +2,7 @@
 
 
 class InvalidPosition(Exception):
-    """Played outside the dimensions of the board."""
+    """Not a valid board position."""
 
 
 class Board(object):

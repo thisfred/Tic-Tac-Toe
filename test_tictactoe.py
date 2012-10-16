@@ -31,3 +31,8 @@ class BoardTests(TestCase):
         self.assertRaises(InvalidPosition, self.board.play, 1, 3, player)
         self.assertRaises(InvalidPosition, self.board.play, -1, 1, player)
         self.assertRaises(InvalidPosition, self.board.play, 1, -1, player)
+
+    def test_occupied(self):
+        player = 1
+        self.board.positions[2][2] = 2
+        self.assertRaises(InvalidPosition, self.board.play, 2, 2, player)
