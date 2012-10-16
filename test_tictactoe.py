@@ -50,3 +50,17 @@ class BoardTests(TestCase):
         player = 1
         self.board.play(2, 2, player)
         self.assertRaises(OutOfTurn, self.board.play, 1, 2, player)
+
+    def test_game_over_false(self):
+        """Game over returns False when game is not over."""
+        player = 1
+        self.assertEqual(False, self.board.game_over)
+        self.board.play(2, 2, player)
+        self.assertEqual(False, self.board.game_over)
+
+    def test_game_over_board_full(self):
+        self.board.positions = [
+            [1, 2, 1],
+            [2, 2, 1],
+            [1, 1, 2]]
+        self.assertEqual(True, self.board.game_over)
