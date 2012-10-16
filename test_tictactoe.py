@@ -32,7 +32,15 @@ class BoardTests(TestCase):
         self.assertRaises(InvalidPosition, self.board.play, -1, 1, player)
         self.assertRaises(InvalidPosition, self.board.play, 1, -1, player)
 
+    def test_invalid_coordinate_values(self):
+        """Non-integer coordinates raise an exception."""
+        player = 1
+        self.assertRaises(InvalidPosition, self.board.play, '3', 1, player)
+        self.assertRaises(
+            InvalidPosition, self.board.play, 1, 'wednesday', player)
+
     def test_occupied(self):
+        """Playing to an occupied position raises an exception."""
         player = 1
         self.board.positions[2][2] = 2
         self.assertRaises(InvalidPosition, self.board.play, 2, 2, player)

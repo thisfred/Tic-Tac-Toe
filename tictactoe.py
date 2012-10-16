@@ -22,6 +22,12 @@ class Board(object):
         if x < 0 or y < 0:
             raise InvalidPosition
         try:
-            self.positions[x][y] = player
+            current = self.positions[x][y]
         except IndexError:
-            raise InvalidPosition
+            raise InvalidPosition("Position (%d, %d) out of bounds." % (x, y))
+        except TypeError:
+            raise InvalidPosition("Illegal position (%r, %r)." % (x, y))
+        if current is not None:
+            raise InvalidPosition(
+                "Already occupied by player %s" % (current,))
+        self.positions[x][y] = player
