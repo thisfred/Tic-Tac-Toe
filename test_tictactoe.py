@@ -1,7 +1,7 @@
 """Tests for tictactoe.py."""
 
 from unittest import TestCase
-from tictactoe import Board, InvalidPosition
+from tictactoe import Board, InvalidPosition, OutOfTurn
 
 
 class BoardTests(TestCase):
@@ -44,3 +44,9 @@ class BoardTests(TestCase):
         player = 1
         self.board.positions[2][2] = 2
         self.assertRaises(InvalidPosition, self.board.play, 2, 2, player)
+
+    def test_out_of_turn(self):
+        """Playing out of turn raises an exception."""
+        player = 1
+        self.board.play(2, 2, player)
+        self.assertRaises(OutOfTurn, self.board.play, 2, 3, player)
