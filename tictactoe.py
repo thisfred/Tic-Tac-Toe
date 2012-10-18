@@ -14,6 +14,7 @@ class Board(object):
 
     def __init__(self):
         self.positions = []
+        self.winner = None
         self.players = [1, 2]
         for i in range(3):
             self.positions.append([None, None, None])
@@ -25,9 +26,18 @@ class Board(object):
     def get_pieces(self, player):
         """Return a list of played pieces for player."""
         for y, col in enumerate(self.positions):
-            for x, row in enumerate(col):
-                if row == player:
+            for x, cell in enumerate(col):
+                if cell == player:
                     yield x, y
+
+    @property
+    def board_full(self):
+        """Return True if the board is full, False otherwise."""
+        for col in self.positions:
+            for cell in col:
+                if cell is None:
+                    return False
+        return True
 
     def other_player(self, player):
         for pl in self.players:
